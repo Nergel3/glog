@@ -1,6 +1,9 @@
 package glog
 
-type logger interface {
+/*
+ * Logger interface
+ */
+type Logger interface {
 	Log(...interface{})
 	Logf(string, ...interface{})
 	Mute()

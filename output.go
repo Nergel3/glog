@@ -65,7 +65,7 @@ func NewOutput() Output {
 }
 
 /*
- * NewStdout return a log output to the standard output with the colors
+ * NewStdout return a log output to the standard output with the given color
  */
 func NewStdout(color colors.Color) Output {
 	return &LogOutput{
@@ -76,11 +76,21 @@ func NewStdout(color colors.Color) Output {
 }
 
 /*
- * NewStdout return a log output to the standard output with the colors
+ * NewStderr return a log output to the standard error with the color
+ */
+func NewStderr(color colors.Color) Output {
+	return &LogOutput{
+		Writer: os.Stdout,
+		Quiet:  false,
+		Color:  color,
+	}
+}
+
+/*
+ * NewFileOutput return a log output to a file output
  */
 func NewFileOutput(logFilePath string) (output Output, err error) {
 	f, err := os.OpenFile(logFilePath, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
-
 	if err == nil {
 		output = &LogOutput{
 			Writer: f,
@@ -88,6 +98,5 @@ func NewFileOutput(logFilePath string) (output Output, err error) {
 			Color:  colors.Fg.NONE,
 		}
 	}
-
 	return output, err
 }

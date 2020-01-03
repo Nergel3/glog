@@ -52,7 +52,7 @@ var CRIT = Log{
  * ERR log the error to stdout
  */
 var ERR = Log{
-	Flag:   "ERR",
+	Flag:   "ERROR",
 	Format: DefaultFormat,
 	Output: map[string]Output{
 		"stdout": NewStdout(colors.Fg.RED),
@@ -63,7 +63,7 @@ var ERR = Log{
  * WARNING log the warning to stdout
  */
 var WARNING = Log{
-	Flag:   "WARNING",
+	Flag:   "WARN",
 	Format: DefaultFormat,
 	Output: map[string]Output{
 		"stdout": NewStdout(colors.Fg.YELLOW),

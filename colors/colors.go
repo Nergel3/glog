@@ -46,7 +46,7 @@ var Fg = Colors{
 }
 
 /*
- * Text color the text with the color
+ * Text return the colored text
  */
 func (c Color) Text(data []byte) []byte {
 	return append(c, data...)

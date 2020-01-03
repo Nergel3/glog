@@ -26,10 +26,7 @@ func (l *Log) Log(data ...interface{}) {
  */
 func (l *Log) Logf(format string, data ...interface{}) {
 	fmtData := fmt.Sprintf(format, data...)
-	log := []byte(l.Format(l, fmtData))
-	for _, output := range l.Output {
-		output.Write(log)
-	}
+	l.Log(fmtData)
 }
 
 /*
